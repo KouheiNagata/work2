@@ -1,10 +1,12 @@
 package com.example.nagatakouhei.myapp2;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -48,9 +50,20 @@ public class ListAdapter extends ArrayAdapter<ListItem> {
 
         // サイズを設定
         TextView size = (TextView)view.findViewById(R.id.fileSize);
-        title.setText(item.getFileSize());
+        size.setText(item.getFileSize());
+
+        Button mButton = (Button)convertView.findViewById(R.id.button);
+        mButton.setOnClickListener(new DeleteListener());
+        mButton.setTag(position);
 
         return view;
     }
 
+}
+
+
+class DeleteListener implements View.OnClickListener {
+    public void onClick(View v){
+        //削除処理
+    }
 }
